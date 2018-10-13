@@ -2,7 +2,7 @@ class Agent < ApplicationRecord
     attr_accessor :remember_token, :reset_token
     before_save   :downcase_email, :capitalize_name
 
-    validates :first_name, :last_name, :birthdate, :email, :phone_number, presence: true
+    validates :first_name, :last_name, :birthdate, :email, :phone_number, presence: true, on: :create
     validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
     validates_length_of :phone_number, in: 10..13
     validates :email, uniqueness: true
