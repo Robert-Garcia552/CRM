@@ -8,7 +8,10 @@ class CreateAgents < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.string :email, null: false
       t.string :phone_number, null: false
-      t.boolean :admin
+      t.boolean :admin, default: false
+      t.string :remember_digest
+      t.string :reset_digest
+      t.datetime :reset_sent_at
       t.timestamps
       t.index ["email"], name: "index_users_on_email", unique: true
     end

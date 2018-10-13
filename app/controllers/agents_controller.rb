@@ -23,11 +23,11 @@ class AgentsController < ApplicationController
 	end
 
 	def update
-		@agent.update(agent_params)
-		redirect_to @agent, success: "Agent successfully updated."
-		# else
-		# 	render 'edit', danger: "Unable to update please try again."
-		# end
+		if @agent.update(agent_params)
+			redirect_to @agent, success: "Agent successfully updated."
+		else
+			render 'edit', danger: "Unable to update please try again."
+		end
 	end
 
 	private

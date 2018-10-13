@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   
       if @agent
         login(@agent) #comes from ApplicationController
-        redirect_to agent_path(@agent[:id])
+        redirect_to agent_path(@agent[:id]), success: "Logged in as #{@agent[:first_name]}."
           if @permission == "1"
             remember(@agent)
           end #comes from ApplicationController

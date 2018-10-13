@@ -14,7 +14,7 @@
         <%= f.text_field :middle_name, class: 'form-control' %>
     </div>
     <div class="col-md-6 offset-md-3">
-        <%= f.label :last_name %><span style="color: red" * </span>
+        <%= f.label :last_name %><span style="color: red"> * </span>
         <%= f.text_field :last_name, class: 'form-control' %>
     </div>
     </div>
@@ -39,7 +39,7 @@
         <%= f.label :password_confirmation %><span style="color: red"> * </span>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-6 offset-md-3" style="padding: 20px">
         <%= f.label :image %>
         <%= f.file_field :image %>
     </div>
