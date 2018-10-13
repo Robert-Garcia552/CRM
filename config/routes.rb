@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   resources :agents, except: [:index, :destroy]
+  resources :clients
+  resources :cases
   resource :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
   

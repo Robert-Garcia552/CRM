@@ -1,0 +1,23 @@
+<div class= 'form-group p-4 container'>
+  <h1 class="text-center">New Case</h1>
+    <%= form_for @case do |f| %>
+    <div class="col-md-6 offset-md-3">
+        <span style="color: red">* required field:</span></br>
+    <div class=" row col-md-6 offset-md-3 justify-content-center">
+        <span style="padding: 6px"><%= f.radio_button :type, "Roof" %> Roof </span></br>
+        <span style="padding: 6px"><%= f.radio_button :type, "Patio" %> Patio </span></br>
+        <span style="padding: 6px"><%= f.radio_button :type, "Driveway" %> Driveway </span></br>
+        <span style="padding: 6px"><%= f.radio_button :type, "Windows" %> Windows </span></br>
+        <span style="padding: 6px"><%= f.radio_button :type, "Multiple" %> Multiple </span></br>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: 'form-control' %>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <%= f.label :comments %><span style="color: red"> * </span>
+        <%= f.text_field :comments, class: 'form-control' %>
+    </div>
+    </div>
+  <% end %>
+</div>

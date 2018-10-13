@@ -20,6 +20,7 @@ class AgentsController < ApplicationController
 	end
 
 	def show
+		@clients = Client.all
 	end
 
 	def update

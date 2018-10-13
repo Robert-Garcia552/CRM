@@ -1,0 +1,33 @@
+<div class= 'form-group p-4 container'>
+  <h1 class="text-center">New Client</h1>
+  <%= form_for new_client_path do |f| %>
+    <div class="col-md-6 offset-md-3">
+        <span style="color: red">* required field</span></br>
+        <%= f.label :first_name %><span style="color: red"> * </span>
+        <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <%= f.label :last_name %><span style="color: red"> * </span>
+        <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+    <div class= "col-md-6 offset-md-3">
+        <%= f.label :email %><span style="color: red"> * </span>
+        <%= f.text_field :email, class: 'form-control' %>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <%= f.label :phone_number %><span style="color: red"> * </span>
+        <%= f.number_field :phone_number, class: 'form-control' %>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <%= f.label :insurance %>
+        <%= f.text_field :insurance, class: 'form-control' %>
+    </div>
+    <div class="col-md-6 offset-md-3" style="padding: 20px">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+    </div>
+    <div class="col-md-6 offset-md-3 mt-3">
+        <%= f.submit :Submit, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

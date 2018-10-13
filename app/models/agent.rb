@@ -8,6 +8,7 @@ class Agent < ApplicationRecord
     validates :email, uniqueness: true
 
     has_one_attached :image
+    has_many :clients
 
     has_secure_password
 
@@ -50,7 +51,7 @@ class Agent < ApplicationRecord
 
     # Sends password reset email.
     def send_password_reset_email
-        UserMailer.password_reset(self).deliver_now
+        AgentMailer.password_reset(self).deliver_now
     end
 
     # Returns true if a password reset has expired.

@@ -15,5 +15,14 @@
           <%= link_to 'Edit Profile', edit_agent_path(@agent), class: "btn btn-primary btn-rounded btn-sm" %>
         <% end %>
       </div>
+      <div class="text-center">
+        <h2 class="display-4 text-center">Your Clients</h2>
+        <%= link_to 'New Client', new_client_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+        <% if @clients.any? %>
+          <% clients.map do |client| %>
+            <%= client.first_name %>
+          <% end %>
+        <% end %>
+      </div>
   </div>
 </div>
