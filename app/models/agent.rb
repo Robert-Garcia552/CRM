@@ -7,11 +7,9 @@ class Agent < ApplicationRecord
     validates_length_of :phone_number, in: 10..13
     validates :email, uniqueness: true
 
-    has_secure_password
+    has_one_attached :image
 
-    def next_three_events
-        attending_events.future.first(3)
-    end
+    has_secure_password
 
     # Returns the hash digest of the given string.
     def self.digest(string)
@@ -27,8 +25,8 @@ class Agent < ApplicationRecord
 
     # Remembers a user in the database for use in persistent sessions.
     def remember
-        self.remember_token = User.new_token
-        update_attribute(:remember_digest, User.digest(remember_token))
+        self.remember_token = Agent.new_token
+        update_attribute(:remember_digest, Agent.digest(remember_token))
     end
 
     # Returns true if the given token matches the digest.
@@ -45,9 +43,9 @@ class Agent < ApplicationRecord
 
     # sets the password reset attribute.
     def create_reset_digest
-        self.reset_token = User.new_token
-        update_attribute(:reset_digest,  User.digest(reset_token))
-        update_attribute(:reset_sent_at, Time.zone.now)
+        self.reset_token = Agent.new_token
+        update_attribute(:reset_digest,  Agent.digest(reset_token))
+        update_attribute(:reset_sent_at, Agent.zone.now)
       end
 
     # Sends password reset email.

@@ -3,15 +3,15 @@ class SessionsController < ApplicationController
     end
   
     def create
-      @user = User.find_by(email: params[:email])
+      @agent = Agent.find_by(email: params[:email])
                 .try(:authenticate, params[:password])
       @permission = params[:permission]
   
-      if @user
-        login(@user) #comes from ApplicationController
-        redirect_to user_path(@user[:id])
+      if @agent
+        login(@agent) #comes from ApplicationController
+        redirect_to agent_path(@agent[:id])
           if @permission == "1"
-            remember(@user)
+            remember(@agent)
           end #comes from ApplicationController
       else
         redirect_to new_sessions_path, danger: "Email / Password combination does not exist."
@@ -20,9 +20,9 @@ class SessionsController < ApplicationController
   
     def destroy
       current_user.forget
-      session[:user_id] = nil
+      session[:agent_id] = nil
       cookies.delete :remember_token
-      cookies.delete :user_id
+      cookies.delete :agent_id
       redirect_to root_path, success: "You have successfully logged out."
     end
 end

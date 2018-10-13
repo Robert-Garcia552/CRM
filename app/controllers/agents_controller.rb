@@ -1,5 +1,5 @@
 class AgentsController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update]
+	before_action :set_agent, only: [:show, :edit, :update]
 	before_action :validate_access, only: [:edit, :update]
 
 	def new
@@ -7,8 +7,8 @@ class AgentsController < ApplicationController
 	end
 
 	def create
-		@agent = agent.new(agent_params)
-			if @user.save
+		@agent = Agent.new(agent_params)
+			if @agent.save
 				login(@agent)
 				redirect_to @agent, success: "Agent successfully created"
 			else
@@ -19,19 +19,25 @@ class AgentsController < ApplicationController
 	def edit
 	end
 
+	def show
+	end
+
 	def update
 		@agent.update(agent_params)
-		redirect_to @agent, success: "Agent successfully updated"
+		redirect_to @agent, success: "Agent successfully updated."
+		# else
+		# 	render 'edit', danger: "Unable to update please try again."
+		# end
 	end
 
 	private
 
 	def set_agent
-		@agent = agent.find(params[:id])
+		@agent = Agent.find(params[:id])
 	end
 
 	def validate_access
-		redirect_to root_path unless current_agent.id == @agent.id
+		redirect_to root_path unless current_user.id == @agent.id
 	end
 
 	def agent_params

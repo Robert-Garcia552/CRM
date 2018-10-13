@@ -1,0 +1,19 @@
+<div>
+  <div class="jumbotron m-4">
+    <div class="container">
+      <% if @agent.image.attached? %>
+        <p>
+          <%= image_tag @agent.image.variant(resize: "400"), class: "mx-auto d-block rounded" %>
+        </p>
+      <% end %>
+      <h1 class="display-4 text-center">Welcome, <%= @agent.first_name %></h1>
+      <p class="lead text-center">Let's bring in the business.
+        <br><b>You're in control of your own success.</b></p>
+    </div>
+      <div class="text-center">
+        <% if current_user.id == @agent.id %>
+          <%= link_to 'Edit Profile', edit_agent_path(@agent), class: "btn btn-primary btn-rounded btn-sm" %>
+        <% end %>
+      </div>
+  </div>
+</div>
