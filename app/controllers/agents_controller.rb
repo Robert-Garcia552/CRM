@@ -10,9 +10,9 @@ class AgentsController < ApplicationController
 		@agent = Agent.new(agent_params)
 			if @agent.save
 				login(@agent)
-				redirect_to @agent, success: "Agent successfully created"
+				redirect_to @agent, success: "Agent successfully created."
 			else
-				redirect_to new_agent_path, danger: "Invalid login due to: #{@agent.errors.full_messages.join(', ').downcase}."
+				redirect_to new_agent_path, danger: "Unable to create due to: #{@agent.errors.full_messages.join(', ').downcase}."
 			end
 	end
 

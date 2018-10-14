@@ -1,5 +1,5 @@
 class Case < ApplicationRecord
-    belongs_to :agent
+    belongs_to :clients
 
     has_secure_password
 end

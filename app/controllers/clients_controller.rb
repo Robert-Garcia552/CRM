@@ -1,13 +1,14 @@
 class ClientsController < ApplicationController
-    def new
+	def new
+		@client = Client.new
     end
 
     def create
-		@client = Client.new(client_params)
+		@client = current_user.clients.new(client_params)
 			if @client.save
-				redirect_to agent_path, success: "Agent successfully created", method: :show
+				redirect_to agent_path(current_user), success: "Client successfully created."
 			else
-				redirect_to new_client_path, danger: "Failed to create client due to: #{@client.errors.full_messages.join(', ').downcase}."
+				redirect_to clients_path, danger: "Failed to create client due to: #{@client.errors.full_messages.join(', ').downcase}."
 			end
 	end
 
@@ -24,6 +25,7 @@ class ClientsController < ApplicationController
 								:first_name,								
 								:last_name,
 								:phone_number,
+								:agent_id,
 								:image
 							)
 	end
