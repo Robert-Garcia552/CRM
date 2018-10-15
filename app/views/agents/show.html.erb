@@ -19,16 +19,20 @@
         <h2 class="display-4 text-center">Your Clients</h2>
         <%= link_to 'New Client', new_client_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
       </div>
-      
       <div class="row" style="padding: 20px"> 
         <% current_user.clients.map do |client| %>
-          <div class="col-sm-3">
+          <div class="col-sm-3" key=<%=client.email%>>
               <div class="card text-center" style="width: 18rem;">
-                <img class="card-img-top" src=".../100px180/" alt="Client Image">
                   <div class="card-body">
                     <h5 class="card-title"> <%= client.first_name + ' ' + client.last_name %></h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <p class="card-text">email: <%= client.email %></p>
+                    <p class="card-text">phone: <%= client.phone_number %></p>
+                    <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+                    <ul class="list-group list-group-flush" style="padding: 10px">
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
                   </div>
               </div>
           </div>

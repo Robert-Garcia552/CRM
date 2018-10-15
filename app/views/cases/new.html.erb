@@ -4,11 +4,11 @@
     <div class="col-md-6 offset-md-3">
         <span style="color: red">* required field:</span></br>
     <div class=" row col-md-6 offset-md-3 justify-content-center">
-        <span style="padding: 6px"><%= f.radio_button :type, "Roof" %> Roof </span></br>
-        <span style="padding: 6px"><%= f.radio_button :type, "Patio" %> Patio </span></br>
-        <span style="padding: 6px"><%= f.radio_button :type, "Driveway" %> Driveway </span></br>
-        <span style="padding: 6px"><%= f.radio_button :type, "Windows" %> Windows </span></br>
-        <span style="padding: 6px"><%= f.radio_button :type, "Multiple" %> Multiple </span></br>
+        <span style="padding: 6px"><%= f.radio_button :category, "Roof" %> Roof </span></br>
+        <span style="padding: 6px"><%= f.radio_button :category, "Patio" %> Patio </span></br>
+        <span style="padding: 6px"><%= f.radio_button :category, "Driveway" %> Driveway </span></br>
+        <span style="padding: 6px"><%= f.radio_button :category, "Windows" %> Windows </span></br>
+        <span style="padding: 6px"><%= f.radio_button :category, "Multiple" %> Multiple </span></br>
     </div>
     <div class="col-md-6 offset-md-3">
         <%= f.label :description %>
@@ -17,6 +17,9 @@
     <div class="col-md-6 offset-md-3">
         <%= f.label :comments %><span style="color: red"> * </span>
         <%= f.text_field :comments, class: 'form-control' %>
+    </div>
+    <div class="col-md-6 offset-md-3 mt-3">
+        <%= f.submit :Submit, class: 'btn btn-primary' %>
     </div>
     </div>
   <% end %>
