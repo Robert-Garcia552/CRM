@@ -1,4 +1,4 @@
-class CreateAgents < ActiveRecord::Migration[5.2]
+class CorrectTables < ActiveRecord::Migration[5.2]
   def change
     create_table :agents do |t|
       t.string :first_name, null: false
@@ -15,5 +15,26 @@ class CreateAgents < ActiveRecord::Migration[5.2]
       t.timestamps
       t.index ["email"], name: "index_users_on_email", unique: true
     end
+
+    create_table :clients do |t|
+      t.string :first_name, null: false
+      t.string :last_name, null: false
+      t.string :phone_number, null: false
+      t.string :email, null: false
+      t.string :insurance
+      
+      t.timestamps
+    end
+
+    create_table :cases do |t|
+      t.belongs_to :agent, index: true
+      t.belongs_to :client, index: true
+      t.string :category
+      t.string :description
+      t.string :comments
+
+      t.timestamps
+    end
+    
   end
 end

@@ -1,5 +1,3 @@
-class Case < ApplicationRecord
-    belongs_to :clients
-
-    has_secure_password
+class Case < ApplicationRecord   
+    belongs_to :client
 end

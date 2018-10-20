@@ -2,17 +2,21 @@ class CasesController < ApplicationController
 
 	def new
 		@case = Case.new
-    end
+	end
+
+	def index
+	end
 
 	def create
 		current_user.clients.map do |client|
-		@case = current_user.clients.find_by(email: "#{client.email}").cases.new(case_params)
-		end
-			if @case.save
-				redirect_to agent_path(current_user), success: "Case successfully created."
-			else
-				redirect_to cases_path, danger: "Failed to create case due to: #{@case.errors.full_messages.join(', ').downcase}."
-			end
+			client = Client.find_by(email: "#{client.email}")
+			@case = client.cases.new(case_params)
+				if @case.save
+					redirect_to agent_path(current_user), success: "Case successfully created.", action: :show
+				else
+					redirect_to new_case_path, danger: "Failed to create case due to: #{@case.errors.full_messages.join(', ').downcase}."
+				end
+		end	
 	end
 
     def show
@@ -26,7 +30,9 @@ class CasesController < ApplicationController
 				permit(
 								:category,
 								:description,
-								:comments
+								:comments,
+								:client_id,
+								:agent_id
 							)
 	end
 end
