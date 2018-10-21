@@ -41,35 +41,35 @@
   </div>
 </div>
 
-      <!-- Card -->
-      <div class="row" style="padding: 15px"> 
-        <% current_user.clients.map do |client| %>
-          <div class="col-sm-3" key=<%=client.email%>>
-          <div class="card-group">
-              <div class="card text-center" style="display: flex">
-                  <div class="card-body">
-                    <h5 class="card-title"> <%= client.first_name + ' ' + client.last_name %></h5>
-                    <p class="card-text">email: <%= client.email %></p>
-                    <p class="card-text">phone: <%= client.phone_number %></p>
-                    <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
-                    <p style="padding: 15px">Recent Cases: </p>
-                      <ul class="list-group list-group-flush">
-                        <% if client.cases.first.nil? %>
-                          <li class="list-group-item"> There are no cases to display.</li>
-                        <% end %> 
-                        <% if client.cases.count > 0 %>
-                            <% client.cases.map do |cases| %>
-                              <li class="list-group-item"> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#casesModal" >
-                                <%= cases.category %>
-                              </button> </li>
-                          <% end %>
-                        <% end %>
-                      </ul>
-                  </div>
+<!-- Card -->
+<div class="row" style="padding: 15px"> 
+  <% current_user.clients.map do |client| %>
+    <div class="col-sm-3" key=<%=client.email%>>
+      <div class="card-group">
+          <div class="card text-center" style="display: flex">
+            <div class="card-body">
+              <h5 class="card-title"> <%= client.first_name + ' ' + client.last_name %></h5>
+              <p class="card-text">email: <%= client.email %></p>
+              <p class="card-text">phone: <%= client.phone_number %></p>
+              <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+              <p style="padding: 15px">Recent Cases: </p>
+                <ul class="list-group list-group-flush">
+                  <% if client.cases.first.nil? %>
+                    <li class="list-group-item"> There are no cases to display.</li>
+                  <% end %> 
+                  <% if client.cases.count > 0 %>
+                      <% client.cases.map do |cases| %>
+                        <li class="list-group-item"> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#casesModal" >
+                          <%= cases.category %>
+                        </button> </li>
+                    <% end %>
+                  <% end %>
+                </ul>
               </div>
+            </div>
           </div>
-          </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
