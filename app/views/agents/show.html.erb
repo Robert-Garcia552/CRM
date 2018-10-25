@@ -20,27 +20,6 @@
         <%= link_to 'New Client', new_client_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
       </div>
 
-<!-- Modal for Card Cases -->
-<div class="modal fade" id="casesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Card -->
 <div class="row" style="padding: 15px"> 
   <% current_user.clients.map do |client| %>
@@ -59,9 +38,9 @@
                   <% end %> 
                   <% if client.cases.count > 0 %>
                       <% client.cases.map do |cases| %>
-                        <li class="list-group-item"> <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#casesModal" >
-                          <%= cases.category %>
-                        </button> </li>
+                        <li class="list-group-item">
+                          <%= link_to cases.category, case_path, class: "btn btn-primary btn-rounded btn-sm", action: :show %>
+                        </li>
                     <% end %>
                   <% end %>
                 </ul>

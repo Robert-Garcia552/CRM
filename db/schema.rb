@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_215412) do
+ActiveRecord::Schema.define(version: 2018_10_25_032127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2018_10_20_215412) do
     t.bigint "client_id"
     t.string "category"
     t.string "description"
-    t.string "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["agent_id"], name: "index_cases_on_agent_id"
@@ -74,6 +73,13 @@ ActiveRecord::Schema.define(version: 2018_10_20_215412) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "agent_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "author"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
