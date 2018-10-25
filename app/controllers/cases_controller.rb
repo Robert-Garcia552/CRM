@@ -19,7 +19,8 @@ class CasesController < ApplicationController
 		end
 	end
 
-    def show
+	def show
+		@case = Case.find(params[:id])
     end
 
     private
