@@ -66,3 +66,4 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'sidekiq'
 gem "aws-sdk-s3", require: false
 gem 'aws-sdk-rails'
+gem 'dotenv-rails', groups: [:development]
