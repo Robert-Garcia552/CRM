@@ -16,9 +16,10 @@
 </div>
 
 <!-- Card -->
-<div class="text-center">
-      <h2 class="display-4 text-center">Your Clients</h2>
-      <%= link_to 'New Client', new_client_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+<div class="container m-4 ">
+<div class="float-left">
+      <h2 class="display-4">Your Clients:</h2>
+      <p> <%= link_to 'New Client', new_client_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %> </p>
 </div>
 <div class="row" style="padding: 15px"> 
   <% current_user.clients.map do |client| %>
@@ -50,4 +51,6 @@
       <% end %>
     </div>
   </div>
+</div>
+</div>
 </div>
