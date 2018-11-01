@@ -12,7 +12,11 @@ class ClientsController < ApplicationController
 			end
 	end
 
-    def show
+	def show
+		current_user.clients.map do |client|
+			@client = Client.find_by(email: "#{client.email}")
+			@case = @client.cases.all
+		end	
     end
 
     private

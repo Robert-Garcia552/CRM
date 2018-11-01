@@ -8,7 +8,6 @@ class Agent < ApplicationRecord
     validates :email, uniqueness: true
 
     has_one_attached :image
-    has_many :cases, :through => :clients
     has_many :clients
 
     has_secure_password

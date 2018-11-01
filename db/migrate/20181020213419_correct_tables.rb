@@ -17,6 +17,7 @@ class CorrectTables < ActiveRecord::Migration[5.2]
     end
 
     create_table :clients do |t|
+      t.belongs_to :agent, index: true
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.string :phone_number, null: false
@@ -27,11 +28,18 @@ class CorrectTables < ActiveRecord::Migration[5.2]
     end
 
     create_table :cases do |t|
-      t.belongs_to :agent, index: true
       t.belongs_to :client, index: true
-      t.string :category
+      t.string :category, null: false
       t.string :description
-      t.string :comments
+      t.datetime :start_at
+      t.datetime :end_at
+
+      t.timestamps
+    end
+
+    create_table :comments do |t|
+      t.string :author
+      t.string :comment
 
       t.timestamps
     end

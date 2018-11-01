@@ -20,7 +20,10 @@ class CasesController < ApplicationController
 	end
 
 	def show
-		@case = Case.find(params[:id])
+		current_user.clients.map do |client|
+			client = Client.find_by(email: "#{client.email}")
+			@case = client.cases.find(params[:id])
+		end	
     end
 
     private

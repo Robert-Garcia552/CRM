@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
             remember(@agent)
           end #comes from ApplicationController
       else
-        redirect_to new_sessions_path, danger: "Email / Password combination does not exist."
+        redirect_to new_sessions_path, danger: "Something went wrong, did you sign up?"
       end  
     end
   

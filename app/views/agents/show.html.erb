@@ -38,7 +38,7 @@
                   <% if client.cases.count > 0 %>
                       <% client.cases.map do |cases| %>
                         <li class="list-group-item">
-                          <%= link_to cases.category, case_path, class: "btn btn-primary btn-rounded btn-sm", action: :show %>
+                          <%= link_to 'Client Profile', client_path(params[:id]), class: "btn btn-primary btn-rounded btn-sm", action: :show %>
                         </li>
                     <% end %>
                   <% end %>
