@@ -15,12 +15,13 @@
   </div>
 </div>
 
-<!-- Card -->
-<div class="container m-4 ">
-<div class="float-left">
+<div class="container m-4 float-left">
       <h2 class="display-4">Your Clients:</h2>
       <p> <%= link_to 'New Client', new_client_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %> </p>
 </div>
+
+<!-- Card -->
+<div class="container m-4 ">
 <div class="row" style="padding: 15px"> 
   <% current_user.clients.map do |client| %>
     <div class="col-sm-3" key=<%=client.email%>>
@@ -30,19 +31,13 @@
               <h5 class="card-title"> <%= client.first_name + ' ' + client.last_name %></h5>
               <p class="card-text">email: <%= client.email %></p>
               <p class="card-text">phone: <%= client.phone_number %></p>
-              <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
-              <p style="padding: 15px">Recent Cases: </p>
                 <ul class="list-group list-group-flush">
-                  <% if client.cases.first.nil? %>
-                    <li class="list-group-item"> There are no cases to display.</li>
-                  <% end %> 
-                  <% if client.cases.count > 0 %>
-                      <% client.cases.map do |cases| %>
-                        <li class="list-group-item">
-                          <%= link_to 'Client Profile', client_path(params[:id]), class: "btn btn-primary btn-rounded btn-sm", action: :show %>
-                        </li>
-                    <% end %>
-                  <% end %>
+                  <li class="list-group-item">
+                    <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+                  </li>
+                  <li class="list-group-item">
+                    <%= link_to 'Client Profile', client_path(params[:id]), class: "btn btn-primary btn-rounded btn-sm", action: :show %>
+                  </li>
                 </ul>
               </div>
             </div>
