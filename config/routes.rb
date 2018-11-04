@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :agents, except: [:index, :destroy]
   resources :clients
   resources :cases
+  resources :comments
   resource :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
   

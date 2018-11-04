@@ -4,25 +4,30 @@
     </div>
 </div>
 
-<!-- Card -->
-<div class="text-center">
-      <h2 class="display-4 text-center">Cases</h2>
-      <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+<div class="container m-4 float-left">
+  <h2 class="display-4"> Cases: </h2>
+  <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
 </div>
-<div class="row" style="padding: 15px"> 
-  <% @case.map do |cases| %>
-    <div class="col-sm-3" key=<%=cases.id%>>
-      <div class="card-group">
+
+<!-- Card -->
+<div class="container m-4 ">
+  <div class="row" style="padding: 15px"> 
+    <% @case.map do |cases| %>
+      <div class="col-sm-3" key=<%=cases.id%>>
+        <div class="card-group">
           <div class="card text-center" style="display: flex">
             <div class="card-body">
               <h5 class="card-title"> <%= cases.category %> </h5>
               <p class="card-text">Description: <%= cases.description %></p>
-           
-              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <%= link_to 'Comment', new_comment_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
