@@ -4,30 +4,21 @@
     </div>
 </div>
 
-<div class="container m-4 float-left">
+<div class="container m-4">
   <h2 class="display-4"> Cases: </h2>
   <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
 </div>
 
-<!-- Card -->
-<div class="container m-4 ">
-  <div class="row" style="padding: 15px"> 
-    <% @case.map do |cases| %>
-      <div class="col-sm-3" key=<%=cases.id%>>
-        <div class="card-group">
-          <div class="card text-center" style="display: flex">
-            <div class="card-body">
-              <h5 class="card-title"> <%= cases.category %> </h5>
-              <p class="card-text">Description: <%= cases.description %></p>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <%= link_to 'Comment', new_comment_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container">
+  <% @case.map do |cases| %>
+    <p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="display-6"> <%= cases.category %> </h5>
+          <p>Description: <%= cases.description %></p>
+          <%= link_to 'Comment', new_comment_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+        </li>
+      </ul>
+    </p>
   <% end %>
 </div>
