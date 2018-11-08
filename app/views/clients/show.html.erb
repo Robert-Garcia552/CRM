@@ -16,6 +16,11 @@
         <li class="list-group-item">
           <h5 class="display-6"> <%= cases.category %> </h5>
           <p>Description: <%= cases.description %></p>
+          <% if cases.image.attached? %>
+            <p class="rounded float-right">
+              <%= image_tag cases.image.variant(resize: "200"), class: "mx-auto d-block rounded" %>
+            </p>
+          <% end %>
           <%= link_to 'Comment', new_comment_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
         </li>
       </ul>

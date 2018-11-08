@@ -36,7 +36,7 @@ class CasesController < ApplicationController
 								:description,
 								:comments,
 								:client_id,
-								:agent_id
+								:image
 							)
 	end
 end
