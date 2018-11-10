@@ -21,7 +21,7 @@
               <%= image_tag cases.image.variant(resize: "200"), class: "mx-auto d-block rounded" %>
             </p>
           <% end %>
-          <%= link_to 'Comment', new_comment_path(params[:id]), class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+          <%= link_to 'Comment', new_comment_path(@case), class: "btn btn-primary btn-rounded btn-sm", action: :new %>
         </li>
       </ul>
     </p>

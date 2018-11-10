@@ -13,11 +13,9 @@ class ClientsController < ApplicationController
 	end
 
 	def show
-		current_user.clients.map do |client|
-			@client = Client.find_by(email: "#{client.email}")
+			@client = Client.find(params[:id])
 			@case = @client.cases.all
-		end	
-    end
+  end
 
     private
 

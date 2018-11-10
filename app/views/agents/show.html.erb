@@ -36,7 +36,7 @@
                     <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
                   </li>
                   <li class="list-group-item">
-                    <%= link_to 'Client Profile', client_path(params[:id]), class: "btn btn-primary btn-rounded btn-sm", action: :show %>
+                    <%= link_to 'Client Profile', client_path(client.id), class: "btn btn-primary btn-rounded btn-sm", action: :show %>
                   </li>
                 </ul>
               </div>
