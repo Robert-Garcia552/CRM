@@ -14,6 +14,9 @@
     <div class="col-md-6 offset-md-3 mt-3">
         <%= f.submit :Submit, class: 'btn btn-primary' %>
     </div>
+    <div>
+        <%= hidden_field_tag(:case_id, params[:id]) %>
+    </div>
     </div>
   <% end %>
 </div>

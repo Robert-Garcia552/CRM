@@ -1,15 +1,12 @@
 class CommentsController < ApplicationController
 
-    def new
+	def new
         @comment = Comment.new
     end
 
-    def create
-		@case = Case.all
-		@case.map do |cases|
-			cases = Case.find("#{cases.id}")
-			@comment = cases.comments.new(comments_params)
-		end
+	def create
+		@case = Case.find(params[:case_id])
+		@comment = @case.comments.new(comments_params)
 		if @comment.save
 			redirect_to agent_path(current_user), success: "Comment successfully created."
 		else
