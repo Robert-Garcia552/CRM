@@ -20,7 +20,7 @@
           <%  @case_comments.map do |comment| %>
             <% if cases.id == comment.case_id %>
               <p> By: <%= comment.author %> </p>
-              <p class="badge badge-pill badge-primary"> <%= comment.comment %> </p>
+              <h4> <span class="badge badge-info"> <%= comment.comment %> </span></h4>
             <% end %>
           <% end %>
           <% if cases.image.attached? %>
