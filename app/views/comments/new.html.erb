@@ -3,19 +3,18 @@
     <%= form_for @comment do |f| %>
     <div class="col-md-6 offset-md-3">
         <span style="color: red">* required field:</span></br>
-    <div class="col-md-6 offset-md-3">
-        <%= f.label :author %>
-        <%= f.text_field :author, class: 'form-control' %>
-    </div>
      <div class="col-md-6 offset-md-3" style="padding: 20px">
         <%= f.label :comment %>
         <%= f.text_field :comment, class: 'form-control' %>
     </div>
-    <div class="col-md-6 offset-md-3 mt-3">
-        <%= f.submit :Submit, class: 'btn btn-primary' %>
-    </div>
     <div>
         <%= hidden_field_tag(:case_id, params[:id]) %>
+    </div>
+    <div>
+        <%= f.hidden_field :author, value: current_user.first_name + " " + current_user.last_name %>
+    </div>
+    <div class="col-md-6 offset-md-3 mt-3">
+        <%= f.submit :Submit, class: 'btn btn-primary' %>
     </div>
     </div>
   <% end %>

@@ -15,6 +15,7 @@ class ClientsController < ApplicationController
 	def show
 			@client = Client.find(params[:id])
 			@case = @client.cases.all
+			@case_comments = Comment.all
   end
 
     private
