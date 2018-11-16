@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :validate_access
 
 	def new
         @comment = Comment.new
@@ -15,6 +16,10 @@ class CommentsController < ApplicationController
 	end
 	
 	private
+
+	def validate_access
+		redirect_to root_path unless current_user != nil
+	end
 
 	def comments_params
 		params.

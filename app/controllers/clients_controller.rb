@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+	before_action :validate_access
+
 	def new
 		@client = Client.new
     end
@@ -13,12 +15,16 @@ class ClientsController < ApplicationController
 	end
 
 	def show
-			@client = Client.find(params[:id])
-			@case = @client.cases.all
-			@case_comments = Comment.all
+		@client = Client.find(params[:id])
+		@case = @client.cases.all
+		@case_comments = Comment.all
   end
 
-    private
+		private
+		
+		def validate_access
+			redirect_to root_path unless current_user != nil
+		end
 
     def client_params
 		params.

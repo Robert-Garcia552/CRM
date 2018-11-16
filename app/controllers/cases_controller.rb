@@ -1,4 +1,5 @@
 class CasesController < ApplicationController
+	before_action :validate_access
 
 	def new
 		@case = Case.new
@@ -26,7 +27,11 @@ class CasesController < ApplicationController
 		end	
     end
 
-    private
+	private
+	
+	def validate_access
+		redirect_to root_path unless current_user != nil
+	end
 
     def case_params
 		params.
