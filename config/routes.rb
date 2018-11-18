@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  default_url_options :host => "localhost:3000"
+  default_url_options :host => "localhost:3000" || "case-management-platform.herokuapp.com"
   get 'password_resets/new'
   get 'password_resets/edit'
   require 'sidekiq/web'
