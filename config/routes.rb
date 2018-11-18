@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  default_url_options :host => "localhost:3000"
   get 'password_resets/new'
   get 'password_resets/edit'
   require 'sidekiq/web'
@@ -11,5 +12,4 @@ Rails.application.routes.draw do
   resources :comments
   resource :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  
 end

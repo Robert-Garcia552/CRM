@@ -46,7 +46,7 @@ class Agent < ApplicationRecord
     def create_reset_digest
         self.reset_token = Agent.new_token
         update_attribute(:reset_digest,  Agent.digest(reset_token))
-        update_attribute(:reset_sent_at, Agent.zone.now)
+        update_attribute(:reset_sent_at, Time.zone.now)
       end
 
     # Sends password reset email.
