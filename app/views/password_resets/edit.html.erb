@@ -1,18 +1,19 @@
+<div class="p-4 text-center">
 <% provide(:title, 'Reset password') %>
 <h1>Reset password</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="container center_div">
     <%= form_for(@agent, url: password_reset_path(params[:id])) do |f| %>
 
       <%= hidden_field_tag :email, @agent.email %>
-
+    <p class= "col-md-4 offset-md-4">
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
-
+    </p>
+    <p class= "col-md-4 offset-md-4">
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-
+    </p>
       <%= f.submit "Update password", class: "btn btn-primary" %>
     <% end %>
   </div>
