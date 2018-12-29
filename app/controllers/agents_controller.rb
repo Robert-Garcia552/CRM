@@ -56,5 +56,4 @@ class AgentsController < ApplicationController
 								:image
 							)
 	end
-
 end

@@ -25,7 +25,7 @@ class CasesController < ApplicationController
 			client = Client.find_by(email: "#{client.email}")
 			@case = client.cases.find(params[:id])
 		end	
-    end
+  end
 
 	private
 	
@@ -33,7 +33,7 @@ class CasesController < ApplicationController
 		redirect_to root_path unless current_user != nil
 	end
 
-    def case_params
+  def case_params
 		params.
 			require(:case).
 				permit(

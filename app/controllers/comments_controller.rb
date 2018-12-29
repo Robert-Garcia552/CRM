@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
 	before_action :validate_access
 
 	def new
-        @comment = Comment.new
-    end
+    @comment = Comment.new
+  end
 
 	def create
 		@case = Case.find(params[:case_id])
@@ -30,6 +30,4 @@ class CommentsController < ApplicationController
 						:case_id
 						)
 	end
-
-
 end
