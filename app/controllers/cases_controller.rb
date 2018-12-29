@@ -10,11 +10,11 @@ class CasesController < ApplicationController
 
 	def create
 		current_user.clients.map do |client|
-			client = Client.find_by(email: "#{client.email}")
+			client = Client.find(params[:client_id])
 			@case = client.cases.new(case_params)
 		end	
 		if @case.save
-			redirect_to agent_path(current_user), success: "Case successfully created."
+			redirect_to client_path(@case.client_id), success: "Case successfully created."
 		else
 			redirect_to new_case_path, danger: "Failed to create case due to: #{@case.errors.full_messages.join(', ').downcase}."
 		end

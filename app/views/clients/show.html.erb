@@ -6,7 +6,7 @@
 
 <div class="container m-4">
   <h2 class="display-4"> Cases: </h2>
-  <%= link_to 'New Case', new_case_path, class: "btn btn-primary btn-rounded btn-sm", action: :new %>
+  <%= link_to 'New Case', new_case_path(id: @client.id), class: "btn btn-primary btn-rounded btn-sm", action: :new %>
 </div>
 
 <div class="container">
@@ -19,8 +19,11 @@
           <p> Comments: </p>
           <%  @case_comments.map do |comment| %>
             <% if cases.id == comment.case_id %>
+              <div style="padding: 5px">
               <p> By: <%= comment.author %> </p>
               <h4> <span class="badge badge-info"> <%= comment.comment %> </span></h4>
+              <span> <%= comment.created_at.strftime("%m/%d/%Y %I:%M%p") %> </span>
+              </div>
             <% end %>
           <% end %>
           <% if cases.image.attached? %>
