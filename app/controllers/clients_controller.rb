@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
     if @client.save
       redirect_to agent_path(current_user), success: "Client successfully created."
     else
-      redirect_to agent_path(current_user), danger: "Failed to create client due to: #{@client.errors.full_messages.join(', ').downcase}."
+      redirect_to new_client_path, danger: "Failed to create client due to: #{@client.errors.full_messages.join(', ').downcase}."
     end
 	end
 

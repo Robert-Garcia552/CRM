@@ -9,14 +9,12 @@ class CasesController < ApplicationController
 	end
 
 	def create
-		current_user.clients.map do |client|
-			client = Client.find(params[:client_id])
-			@case = client.cases.new(case_params)
-		end	
+    client = Client.find(params[:client_id])
+    @case = client.cases.new(case_params)
 		if @case.save
 			redirect_to client_path(@case.client_id), success: "Case successfully created."
 		else
-			redirect_to new_case_path, danger: "Failed to create case due to: #{@case.errors.full_messages.join(', ').downcase}."
+			redirect_to new_case_path(id: params[:client_id]), danger: "Failed to create case due to: #{@case.errors.full_messages.join(', ').downcase}."
 		end
 	end
 
@@ -39,7 +37,8 @@ class CasesController < ApplicationController
 				permit(
 								:category,
 								:description,
-								:comments,
+                :comments,
+                :status,
 								:client_id,
 								:image
 							)

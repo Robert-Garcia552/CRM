@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 		if @comment.save
 			redirect_to client_path(@case.client_id), success: "Comment successfully created."
 		else
-			redirect_to new_comment_path, danger: "Failed to create comment due to: #{@comment.errors.full_messages.join(', ').downcase}."
+			redirect_to new_comment_path(id: params[:case_id]), danger: "Failed to create comment due to: #{@comment.errors.full_messages.join(', ').downcase}."
 		end	
 	end
 	 

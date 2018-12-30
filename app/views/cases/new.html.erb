@@ -2,22 +2,26 @@
   <h1 class="text-center">New Case</h1>
     <%= form_for @case do |f| %>
     <div class="col-md-6 offset-md-3">
-        <span style="color: red">* required field:</span></br>
-    <div class=" row col-md-6 offset-md-3 justify-content-center">
-        <span style="padding: 6px"><%= f.radio_button :category, "Roof" %> Roof </span></br>
-        <span style="padding: 6px"><%= f.radio_button :category, "Patio" %> Patio </span></br>
-        <span style="padding: 6px"><%= f.radio_button :category, "Driveway" %> Driveway </span></br>
-        <span style="padding: 6px"><%= f.radio_button :category, "Windows" %> Windows </span></br>
-        <span style="padding: 6px"><%= f.radio_button :category, "Multiple" %> Multiple </span></br>
+      <span class="col-md-6 offset-md-3" style="color: red">* required field:</span>
+    <div class=" row col-md-6 offset-md-3" style="padding: 10px">
+      <p><span style="color: red"> * </span><%= f.label :category %>
+      <%= f.select(:category, options_for_select([["Roof"], ["Patio"], ["Driveway"], ['Windows'], ['Multiple']])) %> 
+      </p>
     </div>
     <div class="col-md-6 offset-md-3">
-        <%= f.label :description %>
+        <p><span style="color: red"> * </span><%= f.label :description %>
         <%= f.text_field :description, class: 'form-control' %>
+        </p>
+    </div>
+    <div class="col-md-6 offset-md-3" style="padding-top: 10px">
+      <p><span style="color: red"> * </span><%= f.label :status %>
+      <%= f.select(:status, options_for_select([["Open"], ["In Progress"], ["Completed"]])) %> 
+      </p>
     </div>
     <div>
         <%= hidden_field_tag(:client_id, params[:id]) %>
     </div>
-     <div class="col-md-6 offset-md-3" style="padding: 20px">
+     <div class="col-md-6 offset-md-3" style="padding-top: 10px">
         <%= f.label :image %>
         <%= f.file_field :image %>
     </div>
