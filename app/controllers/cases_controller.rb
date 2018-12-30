@@ -39,6 +39,7 @@ class CasesController < ApplicationController
 								:description,
                 :comments,
                 :status,
+                :estimated_completion_date,
 								:client_id,
 								:image
 							)
