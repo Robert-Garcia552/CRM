@@ -41,7 +41,7 @@ class CasesController < ApplicationController
                 :status,
                 :estimated_completion_date,
 								:client_id,
-								:image
+								:images
 							)
 	end
 end

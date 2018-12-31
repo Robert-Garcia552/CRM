@@ -26,9 +26,9 @@
               </div>
             <% end %>
           <% end %>
-          <% if cases.image.attached? %>
+          <% if cases.images.attached? %>
             <p class="rounded float-right">
-              <%= image_tag cases.image.variant(resize: "200"), class: "mx-auto d-block rounded" %>
+              <%= image_tag cases.images.variant(resize: "200"), class: "mx-auto d-block rounded" %>
             </p>
           <% end %>
           <br><%= link_to 'Comment', new_comment_path(id: cases.id), class: "btn btn-primary btn-rounded btn-sm", action: :new %>
