@@ -23,7 +23,20 @@ class CasesController < ApplicationController
 			client = Client.find_by(email: "#{client.email}")
 			@case = client.cases.find(params[:id])
 		end	
-  end
+	end
+
+	def edit
+		@case = Case.find(params[:id])
+	end
+	
+	def update
+		@case = Case.find(params[:id])
+		if @case.update(case_params)
+			redirect_to client_path(@case.client_id), success: "Upload successful."
+		else
+			redirect_to client_path, danger: "Failed to update case."
+		end
+	end
 
 	private
 	
