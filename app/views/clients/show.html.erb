@@ -27,11 +27,13 @@
             <% end %>
           <% end %>
           <% if cases.images.attached? %>
-            <p class="rounded float-right">
-              <% cases.images.map do |image| %>
-                <%= image_tag image.variant(resize: "200"), class: "mx-auto d-block rounded" %>
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+              <% cases.images.map do |image, index| %>
+                <li data-target="#myCarousel" data-slide-to="0" data-slide-to="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"><%= image_tag image.variant(resize: "200"), class: "mx-auto d-block rounded" %></li>
               <%end%>
-            </p>
+              </ol>
+            </div>
           <% end %>
           <br><%= link_to 'Comment', new_comment_path(id: cases.id), class: "btn btn-primary btn-rounded", action: :new %>
               <%= link_to 'Edit Case', edit_case_path(id: cases.id), class: "btn btn-primary btn-rounded", action: :edit %>
