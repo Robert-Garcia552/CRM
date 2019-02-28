@@ -2,7 +2,7 @@
 
 ### Purpose
 
-Give a business owner the ability to keep track of clients and workflows. Passion project to enhance my Ruby on Rails skillset.
+Give a business owner the ability to keep track of clients and workflows. Passion project to enhance my Ruby on Rails skillset. Project is ongoing.
 
 ### Author
 
